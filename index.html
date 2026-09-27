@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Mohamed Abdelfattah — Cybersecurity Engineer specializing in offensive security, web penetration testing, and infrastructure security.">
+    <title>Mohamed Abdelfattah | Cybersecurity Portfolio</title>
+    <link rel="icon" type="image/png" href="hacker-2.png">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <canvas id="matrix-canvas"></canvas>
+
+    <nav>
+        <div class="logo">M.Abdelfattah<span>_</span></div>
+        <button id="nav-toggle" aria-label="Menu"><i class="fa-solid fa-bars"></i></button>
+        <ul id="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#education">Education</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#experiences">Experience</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- 1. Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1 class="glitch" id="hero-glitch"></h1>
+                <h2 id="hero-name"></h2>
+                <h3 id="hero-title"></h3>
+                <h3 class="typing-line">&gt; <span id="typed-text"></span></h3>
+                <p id="hero-desc"></p>
+                <div class="hero-actions">
+                    <a href="#contact" class="btn">Initiate_Connection</a>
+                    <a href="#projects" class="btn btn-ghost">View_Operations</a>
+                </div>
+            </div>
+
+            <!-- ▼ مكان صورتك: إطار ثابت 300×360 (بورتريه)
+                 حط صورتك هنا وغيرها في data.js — أي مقاس object-fit: cover هيقصها أوتوماتيك (الأفضل 600×720) -->
+            <div class="profile-container">
+                <div class="profile-frame">
+                    <img id="hero-photo" src="2.png" alt="Mohamed Abdelfattah" class="profile-img">
+                    <span class="status-dot" title="Available for freelance"></span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 2. About Me -->
+    <section id="about" class="section-container">
+        <h2 class="section-title" id="about-heading"></h2>
+        <div class="about-grid">
+            <div id="about-text" class="about-text"></div>
+            <div id="about-stats" class="about-stats"></div>
+        </div>
+    </section>
+
+    <!-- 3. Education -->
+    <section id="education" class="section-container">
+        <h2 class="section-title">Education</h2>
+        <div id="education-grid" class="grid-container"></div>
+        <div class="card cert-card">
+            <h3><i class="fa-solid fa-certificate" style="color:#00f3ff;"></i> Certifications</h3>
+            <ul id="certifications-list" class="cert-list"></ul>
+        </div>
+    </section>
+
+    <!-- 4. Skills -->
+    <section id="skills" class="section-container">
+        <h2 class="section-title">Technical_Arsenal</h2>
+        <div id="skills-grid"></div>
+    </section>
+
+    <!-- 5. Experiences -->
+    <section id="experiences" class="section-container">
+        <h2 class="section-title">Experience</h2>
+        <div id="experiences-grid" class="grid-container"></div>
+    </section>
+
+    <!-- 6. Services -->
+    <section id="services" class="section-container">
+        <h2 class="section-title">Services_Offered</h2>
+        <div id="services-grid" class="grid-container"></div>
+    </section>
+
+    <!-- 7. Projects & Interactive Topologies -->
+    <section id="projects" class="section-container">
+        <h2 class="section-title">Operations_&_Topologies</h2>
+
+        <!-- التوبولوجي الأولى: لاب الاختراق والـ SIEM -->
+        <div class="topology-box" style="margin-bottom: 50px;">
+            <div class="topo-header">
+                <h3><i class="fa-solid fa-network-wired"></i> Lab 1: Offensive &amp; Defensive Architecture (FortiGate + Wazuh)</h3>
+                <p>Red-team attacks from an external Parrot OS node against multi-service internal servers, filtered by FortiGate NGFW. Wazuh agents on every internal node stream logs to the SIEM.</p>
+            </div>
+
+            <div class="topology-diagram">
+                <div class="topo-zone zone-untrusted">
+                    <span class="zone-label">Untrusted / WAN</span>
+                    <div class="topo-node attacker">
+                        <div class="node-icon"><i class="fa-brands fa-linux"></i></div>
+                        <span class="node-name">Attacker</span>
+                        <span class="node-role">Parrot OS</span>
+                    </div>
+                </div>
+
+                <div class="topo-link">
+                    <div class="topo-path"><div class="packet malicious"></div></div>
+                    <span class="link-label">Exploit<br>Attempt</span>
+                </div>
+
+                <div class="topo-zone zone-perimeter">
+                    <span class="zone-label">Perimeter</span>
+                    <div class="topo-node firewall">
+                        <div class="node-icon"><i class="fa-solid fa-wall-brick"></i></div>
+                        <span class="node-name">FortiGate</span>
+                        <span class="node-role">NGFW · Policies · VPN · IPS</span>
+                    </div>
+                </div>
+
+                <div class="topo-link">
+                    <div class="topo-path"><div class="packet secure"></div></div>
+                    <span class="link-label">Filtered<br>Traffic</span>
+                </div>
+
+                <div class="topo-zone zone-internal">
+                    <span class="zone-label">Internal Network</span>
+                    <div class="topo-cluster">
+                        <div class="sub-node"><i class="fa-brands fa-windows"></i> Win Server — AD / DNS / Web / SMB</div>
+                        <div class="sub-node"><i class="fa-solid fa-server"></i> Ubuntu Node</div>
+                        <div class="sub-node agent"><i class="fa-solid fa-shield-halved"></i> Wazuh Agents</div>
+                    </div>
+                </div>
+
+                <div class="topo-link">
+                    <div class="topo-path"><div class="packet alert"></div></div>
+                    <span class="link-label">Log<br>Stream</span>
+                </div>
+
+                <div class="topo-zone zone-monitor">
+                    <span class="zone-label">Monitoring</span>
+                    <div class="topo-node siem">
+                        <div class="node-icon"><i class="fa-solid fa-shield-dog"></i></div>
+                        <span class="node-name">Wazuh SIEM</span>
+                        <span class="node-role">Alerts · Dashboards</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="topo-legend">
+                <span><i class="dot dot-malicious"></i> Malicious Traffic</span>
+                <span><i class="dot dot-secure"></i> Allowed / Filtered</span>
+                <span><i class="dot dot-alert"></i> Logs / Alerts</span>
+            </div>
+        </div>
+
+        <!-- التوبولوجي الثانية: كورس Cisco Network Security -->
+        <div class="topology-box">
+            <div class="topo-header">
+                <h3><i class="fa-solid fa-shield-halved"></i> Lab 2: Cisco Network Security Architecture (ASA · ZBF · AAA · IPsec · IPS)</h3>
+                <p>End-to-end implementation of the Cisco Networking Academy "Network Security" curriculum (45 hands-on labs in Packet Tracer): device hardening, stateful &amp; zone-based firewalls, Extended ACLs, AAA, Layer 2 attack mitigation, and IPsec VPNs — site-to-site and remote-access.</p>
+            </div>
+
+            <div class="topology-diagram">
+                <div class="topo-zone zone-untrusted">
+                    <span class="zone-label">Remote / Branch</span>
+                    <div class="topo-stack">
+                        <div class="topo-node vpn">
+                            <div class="node-icon"><i class="fa-solid fa-user-lock"></i></div>
+                            <span class="node-name">RA VPN Client</span>
+                            <span class="node-role">Remote-Access Tunnel</span>
+                        </div>
+                        <div class="topo-node vpn">
+                            <div class="node-icon"><i class="fa-solid fa-building-shield"></i></div>
+                            <span class="node-name">Branch Router</span>
+                            <span class="node-role">Site-to-Site IPsec Peer</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="topo-link">
+                    <div class="topo-path"><div class="packet crypto"></div></div>
+                    <span class="link-label">IPsec<br>Tunnels</span>
+                </div>
+
+                <div class="topo-zone zone-perimeter">
+                    <span class="zone-label">Perimeter</span>
+                    <div class="topo-node asa">
+                        <div class="node-icon"><i class="fa-solid fa-fire"></i></div>
+                        <span class="node-name">ASA / ZBF</span>
+                        <span class="node-role">Stateful FW · Ext. ACLs · Hardening</span>
+                    </div>
+                </div>
+
+                <div class="topo-link">
+                    <div class="topo-path"><div class="packet secure"></div></div>
+                    <span class="link-label">Policy<br>Enforced</span>
+                </div>
+
+                <div class="topo-zone zone-internal">
+                    <span class="zone-label">Internal Network</span>
+                    <div class="topo-cluster">
+                        <div class="sub-node"><i class="fa-solid fa-key"></i> AAA — RADIUS / TACACS+</div>
+                        <div class="sub-node"><i class="fa-solid fa-network-wired"></i> L2 Switch — PortSec · DHCP Snooping · DAI</div>
+                        <div class="sub-node"><i class="fa-solid fa-server"></i> Win Servers — AD / Web / Syslog</div>
+                    </div>
+                </div>
+
+                <div class="topo-link">
+                    <div class="topo-path"><div class="packet alert"></div></div>
+                    <span class="link-label">IPS<br>Inspection</span>
+                </div>
+
+                <div class="topo-zone zone-monitor">
+                    <span class="zone-label">Detection</span>
+                    <div class="topo-node idps">
+                        <div class="node-icon"><i class="fa-solid fa-radar"></i></div>
+                        <span class="node-name">IPS</span>
+                        <span class="node-role">Prevent · Block · Alert</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="topo-legend">
+                <span><i class="dot dot-crypto"></i> IPsec Encrypted</span>
+                <span><i class="dot dot-secure"></i> Policy Passed</span>
+                <span><i class="dot dot-alert"></i> Inspection / Alerts</span>
+            </div>
+        </div>
+
+        <div id="projects-grid" class="grid-container" style="margin-top: 40px;"></div>
+    </section>
+
+    <!-- 8. Testimonials -->
+    <section id="testimonials" class="section-container">
+        <h2 class="section-title">Testimonials</h2>
+        <div id="testimonials-grid" class="grid-container"></div>
+    </section>
+
+    <!-- 9. CTA -->
+    <section id="cta" class="section-container cta-box">
+        <h2 id="cta-heading" class="glitch"></h2>
+        <p id="cta-subtext" style="margin: 20px 0; color: #8b98a5;"></p>
+        <a href="#contact" id="cta-btn" class="btn"></a>
+    </section>
+
+    <!-- 10. Contact Info -->
+    <section id="contact" class="section-container">
+        <h2 class="section-title">Contact_Info</h2>
+        <div class="contact-content">
+            <p>Direct communication channels for freelance projects, VAPT, and SOC consulting:</p>
+            <div class="contact-links">
+                <a id="contact-email" href="" class="btn"><i class="fa-solid fa-envelope"></i> Email</a>
+                <a id="contact-whatsapp" href="" target="_blank" class="btn"><i class="fa-brands fa-whatsapp"></i> WhatsApp</a>
+                <a id="contact-linkedin" href="" target="_blank" class="btn"><i class="fa-brands fa-linkedin"></i> LinkedIn</a>
+                <a id="contact-github" href="" target="_blank" class="btn"><i class="fa-brands fa-github"></i> GitHub</a>
+            </div>
+        </div>
+        <footer>
+            <p>© 2026 Mohamed Abdelfattah  <span style="color:#00f3ff;">&lt;/&gt;</span>.</p>
+        </footer>
+    </section>
+
+    <script src="data.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
